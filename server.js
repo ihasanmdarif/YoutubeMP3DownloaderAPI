@@ -10,10 +10,11 @@ var VideoInfoArray = [];
 var AudioInfoArray = [];
 
 //start the server in 80 port
-app.listen(80, () => {
-    console.log("Server started on PORT 80");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, err => {
+    if(err) throw err;
+    console.log("%c Server running", "color: green");
 });
-
 
 // Calling homepage ang get this page
 app.get("/", (req, res) => {
