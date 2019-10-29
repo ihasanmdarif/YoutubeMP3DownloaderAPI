@@ -1,0 +1,24 @@
+{
+  "name": "youtubenodeapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "12.10.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "jsdom": "^15.2.0",
+    "node-html-parser": "^1.1.16",
+    "postman-request": "^2.88.1-postman.15",
+    "ytdl-core": "^1.0.0"
+  }
+}
