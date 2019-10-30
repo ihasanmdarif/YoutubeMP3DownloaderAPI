@@ -88,20 +88,16 @@ function getAudioLink(query) {
 
     ytdl.getInfo(query, (err, info) => {
         info.formats.forEach(element => {
-
             if (element.itag === "140" ||
                 element.itag === "171" ||
                 element.itag === "251") {
-                    var index = AudioInfoArray.findIndex(x => x.itag==element.itag)
-
                     var audio = new AudioInfo(element.itag,element.url);
-                    if (index === -1){
+                    if(AudioInfoArray.length < 3){
                         AudioInfoArray.push(audio);
                     }
             }
         })
     });
-
 }
 
 function VideoInfo(title, videoId, imgLink) {
