@@ -36,6 +36,7 @@ app.get("/search", (req, res) => {
     } else {
         getSearchedlist(query);
         res.json(VideoInfoArray);
+        VideoInfoArray = [];
     }
 });
 
@@ -52,6 +53,7 @@ app.get("/download", (req, res) => {
     } else {
         getAudioLink(query);
         res.json(AudioInfoArray);
+        AudioInfoArray = [];
     }
 
 })
