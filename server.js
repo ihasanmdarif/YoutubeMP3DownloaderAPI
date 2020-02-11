@@ -85,9 +85,9 @@ function getAudioLink(query,res) {
     ytdl.getInfo(query, (err, info) => {
         var AudioInfoArray = [];
         info.formats.forEach(element => {
-            if (element.itag === "140" ||
-                element.itag === "171" ||
-                element.itag === "251") {
+            if (element.itag === 140 ||
+                element.itag === 171 ||
+                element.itag === 251) {
                 var audio = new AudioInfo(element.itag, element.url, info.player_response.videoDetails.title);
                 if (AudioInfoArray.length < 4 ) {
                     AudioInfoArray.push(audio);

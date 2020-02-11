@@ -19,6 +19,6 @@
     "jsdom": "^15.2.0",
     "node-html-parser": "^1.1.16",
     "postman-request": "^2.88.1-postman.15",
-    "ytdl-core": "^1.0.0"
+    "ytdl-core": "^1.0.7"
   }
 }
