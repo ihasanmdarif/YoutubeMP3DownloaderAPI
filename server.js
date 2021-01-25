@@ -2,12 +2,30 @@ var express = require("express");
 const request = require("postman-request");
 var fs = require("fs");
 var app = express();
+const cors = require("cors");
 const cheerio = require("cheerio");
 const ytdl = require("ytdl-core");
-const { query } = require("express");
 
 //start the server in 80 port
 const PORT = process.env.PORT || 3000;
+
+var allowedDomain = [
+  "http://localhost:3000",
+  "https://music-downloader.netlify.app/",
+];
+
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedDomain.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.listen(PORT, (err) => {
   if (err) throw err;
