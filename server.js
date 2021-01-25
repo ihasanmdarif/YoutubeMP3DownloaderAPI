@@ -4,6 +4,7 @@ var fs = require("fs");
 var app = express();
 const cheerio = require("cheerio");
 const ytdl = require("ytdl-core");
+const { query } = require("express");
 
 //start the server in 80 port
 const PORT = process.env.PORT || 3000;
@@ -28,7 +29,7 @@ app.get("/search", (req, res) => {
   var query = req.query.q;
   if (query == undefined) {
     res.status(404).send({
-      success: "false",
+      success: false,
       message: "search with any video name",
     });
   } else {
@@ -96,27 +97,22 @@ function getSearchedlist(query, res) {
   );
 }
 
-function getAudioLink(query, res) {
-  ytdl.getInfo(query, (err, info) => {
-    var AudioInfoArray = [];
-    info.formats.forEach((element) => {
-      if (
-        element.itag === 140 ||
-        element.itag === 171 ||
-        element.itag === 251
-      ) {
-        var audio = new AudioInfo(
-          element.itag,
-          element.url,
-          info.player_response.videoDetails.title
-        );
-        if (AudioInfoArray.length < 4) {
-          AudioInfoArray.push(audio);
-        }
+async function getAudioLink(query, res) {
+  const info = await ytdl.getInfo(query);
+  var AudioInfoArray = [];
+  info.formats.forEach((element) => {
+    if (element.itag === 140 || element.itag === 171 || element.itag === 251) {
+      var audio = new AudioInfo(
+        element.itag,
+        element.url,
+        info.player_response.videoDetails.title
+      );
+      if (AudioInfoArray.length < 4) {
+        AudioInfoArray.push(audio);
       }
-    });
-    res.json(AudioInfoArray);
+    }
   });
+  return res.json(AudioInfoArray);
 }
 
 function VideoInfo(title, videoId, imgLink) {
