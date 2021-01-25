@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "jsdom": "^15.2.0",
     "node-html-parser": "^1.1.16",
+    "nodemon": "^2.0.7",
     "postman-request": "^2.88.1-postman.15",
     "ytdl-core": "^1.0.7"
   }
