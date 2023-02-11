@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "jsdom": "^16.4.0",
     "node-html-parser": "^2.0.2",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.20",
     "postman-request": "^2.88.1-postman.28",
     "ytdl-core": "^4.4.5"
   }
